@@ -24,6 +24,9 @@ public class Main {
 
     for (int t = 1; t <= k; t++) {
       for (int p = 1; p <= n; p++) {
+        if(t == 1){
+          dp[t][p] = 1;
+        }
         if (p == t)
           dp[t][p] = 1;
         else if (p > t)
