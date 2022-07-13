@@ -74,3 +74,60 @@ public class Main {
     }
 
 }
+
+
+/*
+https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/buy-sell-stocks-transaction-fee-ita-official/ojquestion
+Infinite transactions with fee per every transaction
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc=new Scanner(System.in);
+        
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        
+        for(int i = 0; i < n; i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        int fee=sc.nextInt();
+        
+        int ptillB=-arr[0];
+        int ptillS=0;
+        
+        for(int i = 1; i < n; i++){
+            int nptillB=0;
+            int nptillS=0;
+            
+            
+            if(ptillS-arr[i] > ptillB){
+                nptillB = ptillS-arr[i];
+            }else{
+                nptillB = ptillB;
+            }
+            
+            
+            if(arr[i]+ptillB - fee > ptillS){
+                nptillS = arr[i]+ptillB - fee;
+            }else{
+                nptillS = ptillS;
+            }
+            
+            
+            ptillS = nptillS;
+            ptillB = nptillB;
+        }
+        System.out.println(ptillS);
+        
+    }
+
+}
