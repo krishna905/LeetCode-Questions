@@ -183,3 +183,78 @@ class Solution {
         
     }
 }
+
+
+
+/*
+https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/buy-sell-stocks-tta-official/ojquestion
+two transactions
+firstly traverse from 0, find the first max transaction
+secondly traverse from last, find the second max transaction.. and add it
+
+*/
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        int maxtillS=0;
+        int leastSF=arr[0];
+        int dp1[]=new int[n];
+        
+        for(int i=1;i<n;i++){
+        
+            if(arr[i] < leastSF){
+                leastSF = arr[i];
+            }
+            
+            maxtillS= arr[i]-leastSF;
+            
+            if(maxtillS > dp1[i-1]){
+                dp1[i]=maxtillS;
+            }else{
+                dp1[i]=dp1[i-1];
+            }
+        }
+        
+        
+        
+        int maxtillB=0;
+        int maxSF=arr[n-1];
+        int dp2[]=new int[n];
+        
+        for(int i=arr.length-2;i>=0;i--){
+            
+            if(arr[i] > maxSF){
+                maxSF = arr[i]; 
+            }
+            
+            maxtillB = maxSF - arr[i];
+            
+            if(maxtillB > dp2[i+1]){
+                dp2[i]=maxtillB;
+            }else{
+                dp2[i]=dp2[i+1];
+            }
+        }
+        
+        int totalP=0;
+        for(int i=0;i<n;i++){
+            if(dp1[i] + dp2[i] > totalP){
+                totalP = dp1[i] + dp2[i];
+            }
+        }
+        System.out.println(totalP);
+    }
+
+}
