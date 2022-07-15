@@ -131,3 +131,55 @@ public class Main {
     }
 
 }
+
+
+/*
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/submissions/
+
+infinite transactions but 1 day gap for every transacation
+*/
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int ptillB=-prices[0];
+        int ptillS=0;
+        int ptillC=0;
+        
+        for(int i=01;i<prices.length;i++){
+            int nptillB=0;
+            int nptillS=0;
+            int nptillC=0;
+            
+            if(ptillC-prices[i] > ptillB){
+                nptillB= ptillC-prices[i];
+            }else{
+                nptillB = ptillB;
+            }
+            
+            if(ptillB + prices[i] > ptillS){
+                nptillS = ptillB + prices[i];
+            }else{
+                nptillS = ptillS;
+            }
+            
+            if(ptillS > ptillC){
+                nptillC = ptillS;
+            }else{
+                nptillC = ptillC;
+            }
+            
+            
+            ptillB=nptillB;
+            ptillS=nptillS;
+            ptillC=nptillC;
+            
+            
+            
+     }
+        return ptillS;
+        
+        
+        
+        
+    }
+}
