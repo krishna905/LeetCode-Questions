@@ -88,6 +88,8 @@ public class Main{
 /*
 https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/minimum-cost-path-re-official/ojquestion
 
+Printing all min cost paths
+
 */
 
 
