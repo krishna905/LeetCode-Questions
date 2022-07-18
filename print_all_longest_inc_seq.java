@@ -28,7 +28,7 @@ public class Main{
        
         
         int omax = 0;
-        int omaxidx = 0;
+       
         int[]dp = new int[arr.length];
         
             for(int i = 0; i < dp.length; i++) {
@@ -45,14 +45,17 @@ public class Main{
                  dp[i] = max + 1;
                  if(dp[i] > omax) {
                     omax = dp[i];
-                    omaxidx=i;
+                   
                 }
             }
        System.out.println(omax);
        
        ArrayDeque<Pair> q=new ArrayDeque<>();
        
-       q.add(new Pair(omaxidx,omax, arr[omaxidx], arr[omaxidx]+""));
+      for(int i=0;i<dp.length;i++){
+           if(omax==dp[i])
+          q.add(new Pair(i,omax, arr[i], arr[i]+""));
+       }
        
        while(!q.isEmpty()){
            Pair rem= q.pollFirst();
